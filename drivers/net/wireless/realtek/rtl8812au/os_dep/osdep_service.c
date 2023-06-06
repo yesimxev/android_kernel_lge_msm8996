@@ -3150,3 +3150,10 @@ int hexstr2bin(const char *hex, u8 *buf, size_t len)
 
 	for (i = 0; i < len; i++) {
 		a = hex2byte_i(ipos);
+                if (a < 0)
+                        return -1;
+                *opos++ = a;
+                ipos += 2;
+        }
+        return 0;
+}
